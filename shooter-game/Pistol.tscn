@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://x0f2or8soflm"]
 
-[ext_resource type="PackedScene" uid="uid://c1lmaw2tulbx8" path="res://Pistol.glb" id="1_3w4v6"]
+[ext_resource type="PackedScene" uid="uid://c1lmaw2tulbx8" path="res://Assets/Pistol.glb" id="1_3w4v6"]
 
 [node name="pistol" instance=ExtResource("1_3w4v6")]
 transform = Transform3D(0.43, 0, 0, 0, 0.43, 0, 0, 0, 0.43, 0, 0, 0)

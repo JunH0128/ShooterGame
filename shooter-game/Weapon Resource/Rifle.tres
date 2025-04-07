@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="Weapon_Resource" load_steps=2 format=3 uid="uid://bku0ngrhcbl5d"]
+
+[ext_resource type="Script" uid="uid://brq7q6sresex" path="res://Scripts/weapon_resource.gd" id="1_o4lm7"]
+
+[resource]
+script = ExtResource("1_o4lm7")
+Weapon_Name = "Rifle"
+Activate_Anim = "Rifle Activate"
+Shoot_Anim = "Rifle Shoot"
+Reload_Anim = "Rifle Reload"
+Deactivate_Anim = "Rifle Deactivate"
+Out_Of_Ammo_Anim = "Rifle OOA"
+Current_Ammo = 30
+Reserve_Ammo = 60
+Magazine = 30
+Max_Ammo = 60
+Auto_Fire = false
+metadata/_custom_type_script = ExtResource("1_o4lm7")
