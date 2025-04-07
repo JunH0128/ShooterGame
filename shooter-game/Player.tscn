@@ -1,8 +1,9 @@
-[gd_scene load_steps=24 format=3 uid="uid://dipi6emcgss2g"]
+[gd_scene load_steps=25 format=3 uid="uid://dipi6emcgss2g"]
 
 [ext_resource type="Script" uid="uid://bqotppxhs45jt" path="res://Movement.gd" id="1_kpjcp"]
 [ext_resource type="Script" uid="uid://r8wp7v3l82xa" path="res://weapon_manager.gd" id="2_5ncpa"]
 [ext_resource type="PackedScene" uid="uid://x0f2or8soflm" path="res://Pistol.tscn" id="2_kne1u"]
+[ext_resource type="Script" uid="uid://cm067wxna3bjw" path="res://HUD.gd" id="2_wi0c6"]
 [ext_resource type="PackedScene" uid="uid://bxixe6nplqyaq" path="res://Assets/Assault Rifle.glb" id="3_e80uo"]
 [ext_resource type="Script" uid="uid://brq7q6sresex" path="res://Scripts/weapon_resource.gd" id="3_wi0c6"]
 [ext_resource type="PackedScene" uid="uid://ds57c5rhe02yk" path="res://Assets/Shotgun.glb" id="4_cxr5p"]
@@ -392,7 +393,7 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_d6rpx"]
 resource_name = "Rifle Shoot"
-length = 0.2
+length = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -400,10 +401,10 @@ tracks/0/path = NodePath("Assault Rifle:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.0333333, 0.2),
+"times": PackedFloat32Array(0, 0.0333333, 0.1),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector3(0.659334, -0.341495, -1.06067), Vector3(0.659334, -0.170407, -0.811216), Vector3(0.659334, -0.341495, -1.06067)]
+"values": [Vector3(0.659334, -0.341495, -1.06067), Vector3(0.659334, -0.320301, -0.952988), Vector3(0.659334, -0.341495, -1.06067)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -412,10 +413,10 @@ tracks/1/path = NodePath("Assault Rifle:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.0333333, 0.2),
+"times": PackedFloat32Array(0, 0.0333333, 0.1),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector3(0, 0, 0), Vector3(0.559134, 0, 0), Vector3(0, 0, 0)]
+"values": [Vector3(0, 0, 0), Vector3(0.0460418, 0, 0), Vector3(0, 0, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_oudfo"]
@@ -436,6 +437,43 @@ _data = {
 [node name="Player" type="CharacterBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1, 0)
 script = ExtResource("1_kpjcp")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+script = ExtResource("2_wi0c6")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Current Weapon:"
+
+[node name="CurrentWeapon" type="Label" parent="CanvasLayer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+text = "Ammo:"
+
+[node name="CurrentAmmo" type="Label" parent="CanvasLayer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+text = "Weapon Stack:"
+
+[node name="WeaponStack" type="Label" parent="CanvasLayer/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 cast_shadow = 0
@@ -474,4 +512,7 @@ libraries = {
 &"": SubResource("AnimationLibrary_oudfo")
 }
 
+[connection signal="Update_Ammo" from="Neck/Camera3D/Weapon_Manager" to="CanvasLayer" method="_on_weapon_manager_update_ammo"]
+[connection signal="Weapon_changed" from="Neck/Camera3D/Weapon_Manager" to="CanvasLayer" method="_on_weapon_manager_weapon_changed"]
+[connection signal="update_Weapon_Stack" from="Neck/Camera3D/Weapon_Manager" to="CanvasLayer" method="_on_weapon_manager_update_weapon_stack"]
 [connection signal="animation_finished" from="Neck/Camera3D/Weapon_Manager/FPS_Rig/AnimationPlayer" to="Neck/Camera3D/Weapon_Manager" method="_on_animation_player_animation_finished"]

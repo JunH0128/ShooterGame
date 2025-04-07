@@ -14,5 +14,5 @@ Current_Ammo = 30
 Reserve_Ammo = 60
 Magazine = 30
 Max_Ammo = 60
-Auto_Fire = false
+Auto_Fire = true
 metadata/_custom_type_script = ExtResource("1_o4lm7")
