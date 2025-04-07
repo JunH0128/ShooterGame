@@ -256,34 +256,6 @@ tracks/5/keys = {
 "values": [false]
 }
 
-[sub_resource type="Animation" id="Animation_cxr5p"]
-resource_name = "Rifle AOO"
-length = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Assault Rifle:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.0333333, 0.1),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector3(0.659334, -0.341495, -1.06067), Vector3(0.659334, -0.341495, -0.970775), Vector3(0.659334, -0.341495, -1.06067)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Assault Rifle:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.0333333, 0.1),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(0, 0, 0)]
-}
-
 [sub_resource type="Animation" id="Animation_l6ohk"]
 resource_name = "Rifle Activate"
 length = 0.3
@@ -419,6 +391,34 @@ tracks/1/keys = {
 "values": [Vector3(0, 0, 0), Vector3(0.0460418, 0, 0), Vector3(0, 0, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_cxr5p"]
+resource_name = "Rifle OOA"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Assault Rifle:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0.659334, -0.341495, -1.06067), Vector3(0.659334, -0.341495, -0.970775), Vector3(0.659334, -0.341495, -1.06067)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Assault Rifle:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(0, 0, 0)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_oudfo"]
 _data = {
 &"Pistol Activate": SubResource("Animation_tdg3f"),
@@ -427,9 +427,9 @@ _data = {
 &"Pistol Reload": SubResource("Animation_hp6x6"),
 &"Pistol Shoot": SubResource("Animation_wi0c6"),
 &"RESET": SubResource("Animation_dtqjt"),
-&"Rifle AOO": SubResource("Animation_cxr5p"),
 &"Rifle Activate": SubResource("Animation_l6ohk"),
 &"Rifle Deactivate": SubResource("Animation_e80uo"),
+&"Rifle OOA": SubResource("Animation_cxr5p"),
 &"Rifle Reload": SubResource("Animation_oudfo"),
 &"Rifle Shoot": SubResource("Animation_d6rpx")
 }
