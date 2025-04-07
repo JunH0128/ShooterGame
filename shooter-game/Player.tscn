@@ -1,10 +1,11 @@
-[gd_scene load_steps=25 format=3 uid="uid://dipi6emcgss2g"]
+[gd_scene load_steps=26 format=3 uid="uid://dipi6emcgss2g"]
 
 [ext_resource type="Script" uid="uid://bqotppxhs45jt" path="res://Movement.gd" id="1_kpjcp"]
 [ext_resource type="Script" uid="uid://r8wp7v3l82xa" path="res://weapon_manager.gd" id="2_5ncpa"]
 [ext_resource type="PackedScene" uid="uid://x0f2or8soflm" path="res://Pistol.tscn" id="2_kne1u"]
 [ext_resource type="Script" uid="uid://cm067wxna3bjw" path="res://HUD.gd" id="2_wi0c6"]
 [ext_resource type="PackedScene" uid="uid://bxixe6nplqyaq" path="res://Assets/Assault Rifle.glb" id="3_e80uo"]
+[ext_resource type="Texture2D" uid="uid://b2r2us0mte8iq" path="res://Middle Aim.png" id="3_hp6x6"]
 [ext_resource type="Script" uid="uid://brq7q6sresex" path="res://Scripts/weapon_resource.gd" id="3_wi0c6"]
 [ext_resource type="PackedScene" uid="uid://ds57c5rhe02yk" path="res://Assets/Shotgun.glb" id="4_cxr5p"]
 [ext_resource type="Resource" uid="uid://ddmvw5obasde6" path="res://Weapon Resource/Pistol.tres" id="4_hp6x6"]
@@ -336,6 +337,34 @@ tracks/2/keys = {
 "values": [true, false]
 }
 
+[sub_resource type="Animation" id="Animation_cxr5p"]
+resource_name = "Rifle OOA"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Assault Rifle:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0.659334, -0.341495, -1.06067), Vector3(0.659334, -0.341495, -0.970775), Vector3(0.659334, -0.341495, -1.06067)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Assault Rifle:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(0, 0, 0)]
+}
+
 [sub_resource type="Animation" id="Animation_oudfo"]
 resource_name = "Rifle Reload"
 tracks/0/type = "value"
@@ -389,34 +418,6 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Vector3(0, 0, 0), Vector3(0.0460418, 0, 0), Vector3(0, 0, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_cxr5p"]
-resource_name = "Rifle OOA"
-length = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Assault Rifle:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.0333333, 0.1),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector3(0.659334, -0.341495, -1.06067), Vector3(0.659334, -0.341495, -0.970775), Vector3(0.659334, -0.341495, -1.06067)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Assault Rifle:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.0333333, 0.1),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(0, 0, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_oudfo"]
@@ -474,6 +475,15 @@ text = "Weapon Stack:"
 
 [node name="WeaponStack" type="Label" parent="CanvasLayer/VBoxContainer/HBoxContainer3"]
 layout_mode = 2
+
+[node name="Main_Sight" type="TextureRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_hp6x6")
+stretch_mode = 3
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 cast_shadow = 0
