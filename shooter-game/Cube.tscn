@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3 uid="uid://ckfx4lqmjogmj"]
+
+[ext_resource type="Script" uid="uid://bj88oratd0hdi" path="res://World_Objects/physics_target.gd" id="1_k3834"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_4ibfc"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_k3834"]
+albedo_color = Color(0.92093, 0.623322, 3.85046e-07, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4ibfc"]
+
+[node name="Box" type="RigidBody3D" groups=["Target"]]
+script = ExtResource("1_k3834")
+
+[node name="Cube" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_4ibfc")
+surface_material_override/0 = SubResource("StandardMaterial3D_k3834")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_4ibfc")

@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://x0f2or8soflm" path="res://Pistol.tscn" id="2_kne1u"]
 [ext_resource type="Script" uid="uid://cm067wxna3bjw" path="res://HUD.gd" id="2_wi0c6"]
 [ext_resource type="PackedScene" uid="uid://bxixe6nplqyaq" path="res://Assets/Assault Rifle.glb" id="3_e80uo"]
-[ext_resource type="Texture2D" uid="uid://b2r2us0mte8iq" path="res://Middle Aim.png" id="3_hp6x6"]
+[ext_resource type="Texture2D" uid="uid://cfui5yed5dr7q" path="res://Aim Spot.png" id="3_hp6x6"]
 [ext_resource type="Script" uid="uid://brq7q6sresex" path="res://Scripts/weapon_resource.gd" id="3_wi0c6"]
 [ext_resource type="PackedScene" uid="uid://ds57c5rhe02yk" path="res://Assets/Shotgun.glb" id="4_cxr5p"]
 [ext_resource type="Resource" uid="uid://ddmvw5obasde6" path="res://Weapon Resource/Pistol.tres" id="4_hp6x6"]
@@ -58,6 +58,18 @@ tracks/2/keys = {
 "update": 0,
 "values": [Vector3(0, 3.14159, 0), Vector3(0, 1.5708, 0)]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Bullet_Point:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0.654017, -0.152899, -1.31193)]
+}
 
 [sub_resource type="Animation" id="Animation_5ncpa"]
 resource_name = "Pistol Deactivate"
@@ -97,6 +109,18 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Bullet_Point:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0.654017, -0.152899, -1.31193), Vector3(0, 0, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_3tkgg"]
@@ -256,6 +280,30 @@ tracks/5/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Bullet_Point:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Bullet_Point:gizmo_extents")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.25]
+}
 
 [sub_resource type="Animation" id="Animation_l6ohk"]
 resource_name = "Rifle Activate"
@@ -296,6 +344,18 @@ tracks/2/keys = {
 "update": 1,
 "values": [false, true]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Bullet_Point:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0.654475, -0.324046, -1.89097)]
+}
 
 [sub_resource type="Animation" id="Animation_e80uo"]
 resource_name = "Rifle Deactivate"
@@ -335,6 +395,30 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Bullet_Point:gizmo_extents")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.25]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Bullet_Point:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_cxr5p"]
@@ -521,6 +605,9 @@ unique_name_in_owner = true
 libraries = {
 &"": SubResource("AnimationLibrary_oudfo")
 }
+
+[node name="Bullet_Point" type="Marker3D" parent="Neck/Camera3D/Weapon_Manager/FPS_Rig"]
+unique_name_in_owner = true
 
 [connection signal="Update_Ammo" from="Neck/Camera3D/Weapon_Manager" to="CanvasLayer" method="_on_weapon_manager_update_ammo"]
 [connection signal="Weapon_changed" from="Neck/Camera3D/Weapon_Manager" to="CanvasLayer" method="_on_weapon_manager_weapon_changed"]

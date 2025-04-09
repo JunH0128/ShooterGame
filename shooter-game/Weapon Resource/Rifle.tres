@@ -15,4 +15,7 @@ Reserve_Ammo = 60
 Magazine = 30
 Max_Ammo = 60
 Auto_Fire = true
+Type = 1
+Weapon_Range = 2000
+Damage = 1
 metadata/_custom_type_script = ExtResource("1_o4lm7")
