@@ -15,6 +15,9 @@ radius = 0.327274
 height = 1.52778
 
 [node name="Bullet" type="RigidBody3D"]
+top_level = true
+collision_layer = 4
+collision_mask = 5
 mass = 0.1
 continuous_cd = true
 contact_monitor = true
