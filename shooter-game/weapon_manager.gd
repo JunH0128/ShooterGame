@@ -7,6 +7,8 @@ signal update_Weapon_Stack
 @onready var Animation_Player = get_node("%AnimationPlayer")
 @onready var Bullet_Point = get_node("%Bullet_Point")
 
+var Debug_Bullet = preload("res://bullet_debug.tscn")
+
 var Current_Weapon = null
 
 var Weapon_Stack = []
@@ -134,6 +136,11 @@ func Hit_Scan_Collision(Collision_Point):
 	var Bullet_Collision = get_world_3d().direct_space_state.intersect_ray(New_Intersection)
 	
 	if Bullet_Collision:
+		var Hit_Indicator = Debug_Bullet.instantiate()
+		var world = get_tree().get_root()
+		world.add_child(Hit_Indicator)
+		Hit_Indicator.global_translate(Bullet_Collision.position)
+		
 		Hit_Scan_Damage(Bullet_Collision.collider)
 		
 func Hit_Scan_Damage(Collider):
@@ -142,8 +149,11 @@ func Hit_Scan_Damage(Collider):
 		
 func Launch_Projectile(Point: Vector3):
 	var Direction = (Point - Bullet_Point.get_global_transform().origin).normalized()
-	var Projectile = Current_Weapon.Projectile_To_Laod.instantiate()
+	var Projectile = Current_Weapon.Projectile_To_Load.instantiate()
 	
-	Bullet_Point.add_child(Projectile)
+	get_tree().root.add_child(Projectile)
+	Projectile.global_transform.origin = Bullet_Point.global_transform.origin
+	Projectile.look_at(Bullet_Point.global_transform.origin + Direction)
+	
 	Projectile.Damage = Current_Weapon.Damage
-	Projectile.set_linear_velocity(Direction*Current_Weapon.Projectile_Velocity)
+	Projectile.linear_velocity = Direction * Current_Weapon.Projectile_Velocity

@@ -7,7 +7,7 @@
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v7oki"]
 albedo_color = Color(1, 1, 0.337255, 1)
 emission_enabled = true
-emission = Color(0.890055, 0.621129, 3.85046e-07, 1)
+emission = Color(0.996078, 0.992157, 0, 1)
 emission_energy_multiplier = 5.0
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_v8qja"]
@@ -15,6 +15,7 @@ radius = 0.327274
 height = 1.52778
 
 [node name="Bullet" type="RigidBody3D"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 1.06528, 0)
 top_level = true
 collision_layer = 4
 collision_mask = 5
@@ -25,12 +26,12 @@ max_contacts_reported = 10
 script = ExtResource("1_v7oki")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.937921, 0, 0, 0, 0.0849984, 0, 0, 0, 0.0785115, 0, 0, 0)
+transform = Transform3D(-4.09978e-08, 0, -0.0785115, 0, 0.0849984, 0, 0.937921, 0, -3.43185e-09, 2.35063e-08, 0, -0.537761)
 mesh = SubResource("BoxMesh_rtl8c")
 surface_material_override/0 = SubResource("StandardMaterial3D_v7oki")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(-1.17763e-08, -0.703776, 0, 0.26941, -3.0763e-08, 0, 0, 0, 0.252717, 0, 0, 0)
+transform = Transform3D(5.14758e-16, 3.0763e-08, -0.252717, 0.26941, -3.0763e-08, 0, -1.17763e-08, -0.703776, -1.10466e-08, 2.35063e-08, 0, -0.537761)
 shape = SubResource("CapsuleShape3D_v8qja")
 
 [node name="Timer" type="Timer" parent="."]
