@@ -1,0 +1,41 @@
+[gd_scene load_steps=8 format=3 uid="uid://xn2h3wbtcfn5"]
+
+[ext_resource type="Script" uid="uid://bx86i460djcey" path="res://enemy.gd" id="1_n7rjl"]
+[ext_resource type="PackedScene" uid="uid://cgo6wamwp85w5" path="res://enemy_bullet.tscn" id="2_4887i"]
+[ext_resource type="PackedScene" uid="uid://57xfnn2pyd4b" path="res://ammo.tscn" id="3_yrwjn"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yrwjn"]
+albedo_color = Color(0.924241, 0.0199639, 0, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_4887i"]
+material = SubResource("StandardMaterial3D_yrwjn")
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_yrwjn"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_n7rjl"]
+
+[node name="Enemy" type="CharacterBody3D" groups=["Target"]]
+collision_layer = 4
+collision_mask = 7
+script = ExtResource("1_n7rjl")
+bullet_scene = ExtResource("2_4887i")
+ammo_scene = ExtResource("3_yrwjn")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_4887i")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_yrwjn")
+
+[node name="ShootTimer" type="Timer" parent="."]
+
+[node name="Muzzle" type="Marker3D" parent="."]
+
+[node name="DetectionRange" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DetectionRange"]
+transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 0, 0, 0)
+shape = SubResource("SphereShape3D_n7rjl")
+
+[connection signal="body_entered" from="DetectionRange" to="." method="_on_detection_range_body_entered"]
+[connection signal="body_exited" from="DetectionRange" to="." method="_on_detection_range_body_exited"]

@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://bfkvb4bbcc84b"]
+[gd_scene load_steps=11 format=3 uid="uid://bfkvb4bbcc84b"]
 
 [ext_resource type="PackedScene" uid="uid://dipi6emcgss2g" path="res://Player.tscn" id="1_wbfu4"]
 [ext_resource type="PackedScene" uid="uid://ckfx4lqmjogmj" path="res://Cube.tscn" id="2_xkndl"]
 [ext_resource type="PackedScene" uid="uid://57xfnn2pyd4b" path="res://ammo.tscn" id="3_u44n3"]
+[ext_resource type="PackedScene" uid="uid://xn2h3wbtcfn5" path="res://enemy.tscn" id="4_sb48q"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_4ahdr"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -52,3 +53,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.26513, 0.882473, 2.35871)
 
 [node name="Area3D" parent="." instance=ExtResource("3_u44n3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.84861, 0.0177813, 1.49356)
+
+[node name="Enermy" parent="." instance=ExtResource("4_sb48q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.03748, 1, -6.09443)
