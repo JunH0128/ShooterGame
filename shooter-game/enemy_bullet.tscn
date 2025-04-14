@@ -15,8 +15,6 @@ radius = 0.327274
 height = 1.52778
 
 [node name="EnemyBullet" type="Area3D"]
-collision_layer = 4
-collision_mask = 5
 script = ExtResource("1_1xapl")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
@@ -27,5 +25,9 @@ surface_material_override/0 = SubResource("StandardMaterial3D_eueod")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(5.14758e-16, 3.05723e-09, -0.252717, 0.26941, -3.05723e-09, -1.00974e-28, -1.17763e-08, -0.0699414, -1.10466e-08, 2.35063e-08, 0, -0.0656676)
 shape = SubResource("CapsuleShape3D_iddtg")
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+autostart = true
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

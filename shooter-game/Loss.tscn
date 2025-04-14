@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://y74saookm2om"]
+
+[ext_resource type="Texture2D" uid="uid://cpg7r1mux4hyt" path="res://Game over.png" id="1_42ydg"]
+[ext_resource type="Script" uid="uid://vg27er4gf2yq" path="res://loss.gd" id="1_y1f52"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_y1f52")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+offset_right = 1152.0
+offset_bottom = 648.0
+texture = ExtResource("1_42ydg")
+expand_mode = 2

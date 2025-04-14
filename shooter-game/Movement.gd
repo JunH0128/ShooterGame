@@ -4,6 +4,8 @@ extends CharacterBody3D
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
 
+var health: int = 10
+
 var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
 @onready var neck := $Neck
 @onready var camera := $Neck/Camera3D
@@ -47,6 +49,16 @@ func _physics_process(delta: float) -> void:
 		velocity.z = move_toward(velocity.z, 0, SPEED)
 		
 	move_and_slide()
+	
+func take_damage(amount: int) -> void:
+	health -= amount
+	print("Player Health:", health)
+	if health <= 0:
+		distroy()
+		
+func distroy():
+	print("Player died.")
+	get_tree().change_scene_to_file("res://Loss.tscn")
 		
 func add_ammo(weapon_name: String, amount: int):
 	$Neck/Camera3D/Weapon_Manager.add_ammo(weapon_name, amount)
