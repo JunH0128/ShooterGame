@@ -157,3 +157,9 @@ func Launch_Projectile(Point: Vector3):
 	
 	Projectile.Damage = Current_Weapon.Damage
 	Projectile.linear_velocity = Direction * Current_Weapon.Projectile_Velocity
+	
+func add_ammo(weapon_name: String, amount: int):
+	if weapon_name in Weapon_List:
+		Weapon_List[weapon_name].Reserve_Ammo += amount
+		if weapon_name == Current_Weapon.Weapon_Name:
+			emit_signal("Update_Ammo", [Current_Weapon.Current_Ammo, Current_Weapon.Reserve_Ammo])

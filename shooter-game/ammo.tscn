@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://57xfnn2pyd4b"]
+
+[ext_resource type="Script" uid="uid://dgpdvxfmw06w3" path="res://Ammo.gd" id="1_rfx0k"]
+[ext_resource type="PackedScene" uid="uid://131ianupjkfc" path="res://Assets/Pistol Ammo.glb" id="2_cuwaw"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rfx0k"]
+size = Vector3(1, 1, 0.535034)
+
+[node name="Area3D" type="Area3D"]
+script = ExtResource("1_rfx0k")
+
+[node name="Root Scene" parent="." instance=ExtResource("2_cuwaw")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.454119, 0, 0, 0, 0.636145, 0, 0, 0, 1, 0, 0, -0.232483)
+shape = SubResource("BoxShape3D_rfx0k")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
