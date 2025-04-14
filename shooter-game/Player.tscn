@@ -560,6 +560,16 @@ text = "Weapon Stack:"
 [node name="WeaponStack" type="Label" parent="CanvasLayer/VBoxContainer/HBoxContainer3"]
 layout_mode = 2
 
+[node name="HBoxContainer4" type="HBoxContainer" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/VBoxContainer/HBoxContainer4"]
+layout_mode = 2
+text = "Health:"
+
+[node name="Health" type="Label" parent="CanvasLayer/VBoxContainer/HBoxContainer4"]
+layout_mode = 2
+
 [node name="Main_Sight" type="TextureRect" parent="CanvasLayer"]
 anchors_preset = 15
 anchor_right = 1.0
@@ -609,6 +619,7 @@ libraries = {
 [node name="Bullet_Point" type="Marker3D" parent="Neck/Camera3D/Weapon_Manager/FPS_Rig"]
 unique_name_in_owner = true
 
+[connection signal="Update_Health" from="." to="CanvasLayer" method="_on_player_update_health"]
 [connection signal="Update_Ammo" from="Neck/Camera3D/Weapon_Manager" to="CanvasLayer" method="_on_weapon_manager_update_ammo"]
 [connection signal="Weapon_changed" from="Neck/Camera3D/Weapon_Manager" to="CanvasLayer" method="_on_weapon_manager_weapon_changed"]
 [connection signal="update_Weapon_Stack" from="Neck/Camera3D/Weapon_Manager" to="CanvasLayer" method="_on_weapon_manager_update_weapon_stack"]

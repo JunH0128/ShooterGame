@@ -1,5 +1,6 @@
 extends CharacterBody3D
 
+signal Update_Health
 
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
@@ -11,6 +12,9 @@ var gravity: float = ProjectSettings.get_setting("physics/3d/default_gravity")
 @onready var camera := $Neck/Camera3D
 @onready var gun_anim = $Neck/Camera3D/pistol/AnimationPlayer
 @onready var walk_anim = $AnimationPlayer
+
+func _ready() -> void:
+	emit_signal("Update_Health", health)
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
@@ -55,6 +59,8 @@ func take_damage(amount: int) -> void:
 	print("Player Health:", health)
 	if health <= 0:
 		distroy()
+		
+	emit_signal("Update_Health", health)
 		
 func distroy():
 	print("Player died.")
