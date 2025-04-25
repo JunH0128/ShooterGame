@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://b4qsvo1gy7e6"]
+
+[ext_resource type="Script" uid="uid://dihbnsnmr8xnp" path="res://Heal.gd" id="1_oauvi"]
+[ext_resource type="PackedScene" uid="uid://uc27qkr4sxsu" path="res://Assets/Helth Box.glb" id="2_wmjtr"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6egnp"]
+
+[node name="Node3D" type="Area3D"]
+script = ExtResource("1_oauvi")
+
+[node name="Root Scene" parent="." instance=ExtResource("2_wmjtr")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
+shape = SubResource("BoxShape3D_6egnp")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
