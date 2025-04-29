@@ -1,14 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://xn2h3wbtcfn5"]
+[gd_scene load_steps=7 format=3 uid="uid://xn2h3wbtcfn5"]
 
 [ext_resource type="Script" uid="uid://bx86i460djcey" path="res://enemy.gd" id="1_n7rjl"]
 [ext_resource type="PackedScene" uid="uid://cgo6wamwp85w5" path="res://enemy_bullet.tscn" id="2_4887i"]
 [ext_resource type="PackedScene" uid="uid://57xfnn2pyd4b" path="res://ammo.tscn" id="3_yrwjn"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yrwjn"]
-albedo_color = Color(0.924241, 0.0199639, 0, 1)
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_4887i"]
-material = SubResource("StandardMaterial3D_yrwjn")
+[ext_resource type="PackedScene" uid="uid://71guh2taxk8w" path="res://Richie.glb" id="4_iifgy"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_yrwjn"]
 
@@ -21,10 +16,13 @@ script = ExtResource("1_n7rjl")
 bullet_scene = ExtResource("2_4887i")
 ammo_scene = ExtResource("3_yrwjn")
 
+[node name="Root Scene" parent="." instance=ExtResource("4_iifgy")]
+transform = Transform3D(-0.2, 0, -1.74846e-08, 0, 0.2, 0, 1.74846e-08, 0, -0.2, 0, 0, 0.208)
+
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = SubResource("CapsuleMesh_4887i")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.191737)
 shape = SubResource("CapsuleShape3D_yrwjn")
 
 [node name="ShootTimer" type="Timer" parent="."]

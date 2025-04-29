@@ -1,9 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://bfkvb4bbcc84b"]
+[gd_scene load_steps=14 format=3 uid="uid://bfkvb4bbcc84b"]
 
 [ext_resource type="PackedScene" uid="uid://dipi6emcgss2g" path="res://Player.tscn" id="1_wbfu4"]
 [ext_resource type="PackedScene" uid="uid://ckfx4lqmjogmj" path="res://Cube.tscn" id="2_xkndl"]
 [ext_resource type="PackedScene" uid="uid://57xfnn2pyd4b" path="res://ammo.tscn" id="3_u44n3"]
 [ext_resource type="PackedScene" uid="uid://xn2h3wbtcfn5" path="res://enemy.tscn" id="4_sb48q"]
+[ext_resource type="PackedScene" uid="uid://b36c1ntnvpry6" path="res://Level.tscn" id="5_t88pq"]
+[ext_resource type="Script" uid="uid://d1tdybrrvu6lk" path="res://Win.gd" id="6_r0x5m"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_4ahdr"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -26,6 +28,8 @@ albedo_color = Color(0.2607, 0.564433, 0.271436, 1)
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_rkdf5"]
 data = PackedVector3Array(1, 0, 1, -1, 0, 1, 1, 0, -1, -1, 0, 1, -1, 0, -1, 1, 0, -1)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_t88pq"]
+
 [node name="Node3D" type="Node3D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -38,7 +42,7 @@ shadow_enabled = true
 [node name="Player" parent="." instance=ExtResource("1_wbfu4")]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(9.87619, 0, 0, 0, 9.87619, 0, 0, 0, 9.87619, 0, 0, 0)
+transform = Transform3D(9.87619, 0, 0, 0, 9.87619, 0, 0, 0, 9.87619, -12.2409, 0, 22.9791)
 layers = 7
 mesh = SubResource("PlaneMesh_hpuew")
 surface_material_override/0 = SubResource("StandardMaterial3D_8r0ko")
@@ -49,10 +53,57 @@ surface_material_override/0 = SubResource("StandardMaterial3D_8r0ko")
 shape = SubResource("ConcavePolygonShape3D_rkdf5")
 
 [node name="Box" parent="." instance=ExtResource("2_xkndl")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.26513, 0.882473, 2.35871)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.8704, 0.882473, 19.9839)
 
 [node name="Area3D" parent="." instance=ExtResource("3_u44n3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.84861, 0.0177813, 1.49356)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -24.8134, -0.112769, 3.52463)
 
 [node name="Enermy" parent="." instance=ExtResource("4_sb48q")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.03748, 1, -6.09443)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -18.6143, 0.920686, -20.0474)
+
+[node name="Enermy3" parent="." instance=ExtResource("4_sb48q")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -41.9059, 0.693735, -20.0633)
+
+[node name="Enermy4" parent="." instance=ExtResource("4_sb48q")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -42.197, 0.693735, -32.4558)
+
+[node name="Enermy5" parent="." instance=ExtResource("4_sb48q")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -42.197, 0.693735, -48.4207)
+
+[node name="Enermy6" parent="." instance=ExtResource("4_sb48q")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -57.2886, 0.693735, -48.4207)
+
+[node name="Enermy7" parent="." instance=ExtResource("4_sb48q")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -70.6273, 0.693735, -49.8641)
+
+[node name="Enermy8" parent="." instance=ExtResource("4_sb48q")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -70.6273, 0.693735, -47.4156)
+
+[node name="Enermy9" parent="." instance=ExtResource("4_sb48q")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -70.6273, 0.693735, -29.007)
+
+[node name="Enermy10" parent="." instance=ExtResource("4_sb48q")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -98.3616, 0.693735, -48.3762)
+
+[node name="Enermy11" parent="." instance=ExtResource("4_sb48q")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -98.9756, 0.693735, -58.4419)
+
+[node name="Enermy12" parent="." instance=ExtResource("4_sb48q")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -98.9756, 0.693735, -76.9651)
+
+[node name="Enermy13" parent="." instance=ExtResource("4_sb48q")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -76.9343, 0.693735, -76.9651)
+
+[node name="Enermy2" parent="." instance=ExtResource("4_sb48q")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -18.6143, 0.722146, -3.21396)
+
+[node name="HallwayPACK_GLB" parent="." instance=ExtResource("5_t88pq")]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 0.00632799, -0.171588, -16.5652)
+
+[node name="Area3D2" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -70.7327, 0, -80.6418)
+script = ExtResource("6_r0x5m")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D2"]
+transform = Transform3D(4.02153, 0, 0, 0, 5.58796, 0, 0, 0, 1, 0.106216, 1.86708, 0)
+shape = SubResource("BoxShape3D_t88pq")
