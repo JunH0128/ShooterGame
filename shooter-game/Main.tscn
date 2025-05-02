@@ -1,0 +1,55 @@
+[gd_scene load_steps=6 format=3 uid="uid://doi37hfj2d0es"]
+
+[ext_resource type="PackedScene" uid="uid://b36c1ntnvpry6" path="res://Level.tscn" id="1_r0du0"]
+[ext_resource type="PackedScene" uid="uid://bxixe6nplqyaq" path="res://Assets/Assault Rifle.glb" id="2_cm0pq"]
+[ext_resource type="PackedScene" uid="uid://c1lmaw2tulbx8" path="res://Assets/Pistol.glb" id="3_fos0i"]
+[ext_resource type="Script" uid="uid://b457yf4s7o8a4" path="res://Main.gd" id="4_cm0pq"]
+[ext_resource type="AudioStream" uid="uid://k8e8wu2o0gty" path="res://468407__onderwish__sci-fi-survival-dreamscape.mp3" id="5_fos0i"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="HallwayPACK_GLB" parent="." instance=ExtResource("1_r0du0")]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -42.2819, 1.58218, -2.04627)
+
+[node name="Assault Rifle" parent="." instance=ExtResource("2_cm0pq")]
+transform = Transform3D(-0.251461, 2.19834e-08, -0.163607, 0.163607, -1.4303e-08, -0.251461, -2.62268e-08, -0.3, 3.58856e-16, -40.5441, 0.856575, -0.436835)
+
+[node name="Root Scene" parent="." instance=ExtResource("3_fos0i")]
+transform = Transform3D(0.15, 6.55671e-09, -0.259808, 0.259808, -1.13566e-08, 0.15, -6.55671e-09, -0.3, -1.13566e-08, -40.8263, 0.229492, 0.171724)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+script = ExtResource("4_cm0pq")
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer"]
+offset_left = 808.0
+offset_top = 762.0
+offset_right = 1023.0
+offset_bottom = 828.0
+scale = Vector2(1.56, 1.6)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MarginContainer"]
+layout_mode = 2
+
+[node name="Play" type="Button" parent="CanvasLayer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Play"
+
+[node name="Quit" type="Button" parent="CanvasLayer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Quit"
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -42.2874, 5.24084, 0.400376)
+light_energy = 2.0
+spot_range = 12.5671
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("5_fos0i")
+volume_db = 1.0
+autoplay = true
+parameters/looping = false
+
+[connection signal="pressed" from="CanvasLayer/MarginContainer/VBoxContainer/Play" to="CanvasLayer" method="_on_play_pressed"]
+[connection signal="pressed" from="CanvasLayer/MarginContainer/VBoxContainer/Quit" to="CanvasLayer" method="_on_quit_pressed"]
